@@ -1,18 +1,18 @@
 # Code-Robot-tranh-vat-can
 Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
 
-Code mô hình xe robot tránh vật cản
-#include <Servo.h>
-#define trig 3 //chân trig của HC-SR04
-#define echo 4//chân echo của HC-SR04
+-Code mô hình xe robot tránh vật cản
+- #include <Servo.h>
+- #define trig 3 //chân trig của HC-SR04
+- #define echo 4//chân echo của HC-SR04
 
-Servo srf05;  // create servo object to control a servo
-#define inA1 6 //Định nghĩa chân in1 của động cơ A
-#define inA2 7 //Định nghĩa chân in2 của động cơ A
-#define inB1 8 //Định nghĩa chân in1 của động cơ B
-#define inB2 9 //Định nghĩa chân in2 của động cơ B
+- Servo srf05;  // create servo object to control a servo
+- #define inA1 6 //Định nghĩa chân in1 của động cơ A
+- #define inA2 7 //Định nghĩa chân in2 của động cơ A
+- #define inB1 8 //Định nghĩa chân in1 của động cơ B
+- #define inB2 9 //Định nghĩa chân in2 của động cơ B
 
-void setup()
+- void setup()
 {
   pinMode(inA1, OUTPUT);//Set chân in1 của dc A là output
   pinMode(inA2, OUTPUT);//Set chân in2 của dc A là output
