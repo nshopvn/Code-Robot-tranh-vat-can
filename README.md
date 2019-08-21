@@ -1,6 +1,12 @@
 # Code-Robot-tranh-vat-can
 Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
 
+- Các sản phẩm sử dụng cho mô hình xe robot dò đường 
+- <a href="https://nshopvn.com/product/cam-bien-sieu-am-ioe-sr05-ho-tro-ngo-ra-ttl/"><strong>Cảm biến siêu âm IOE-SRF05</strong></a>
+- <a href="https://nshopvn.com/product/cam-bien-sieu-am-hc-sr04/"><strong>Cảm biến siêu âm HCSR04</strong></a>
+- <a href="https://nshopvn.com/product/mach-dieu-khien-dong-co-dc-l298n/"><strong>Mạch điều khiển động cơ DC L298</strong></a>
+- <a href="https://nshopvn.com/product/dong-co-servo-mg996-360-do/"><strong>Động cơ RC Servo 360 độ</strong></a>
+
 -Code mô hình xe robot tránh vật cản
 - #include <Servo.h>
 - #define trig 3 //chân trig của HC-SR04
@@ -151,9 +157,4 @@ Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
     -}
 - }
 
-
-- Các sản phẩm sử dụng cho mô hình xe robot dò đường 
-- <a href="https://nshopvn.com/product/cam-bien-sieu-am-ioe-sr05-ho-tro-ngo-ra-ttl/"><strong>Cảm biến siêu âm IOE-SRF05</strong></a>
-- <a href="https://nshopvn.com/product/cam-bien-sieu-am-hc-sr04/"><strong>Cảm biến siêu âm HCSR04</strong></a
-- <a href="https://nshopvn.com/product/mach-dieu-khien-dong-co-dc-l298n/"><strong>Mạch điều khiển động cơ DC L298</strong></a>
-- <a href="https://nshopvn.com/product/dong-co-servo-mg996-360-do/"><strong>Động cơ RC Servo 360 độ</strong></a>
+- Chúc các bạn thành công và phát triển thêm nhiều mô hình hay hơn nữa !!!
