@@ -44,7 +44,7 @@ Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
   //Serial.println("cm");
   //delay(200);
   - return distance;
-}
+- }
 
 - void robotMover (byte inR1, byte inR2, byte inL1, byte inL2, byte action){
   - switch (action){
@@ -86,8 +86,8 @@ Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
       - break;
     - default:
       - action = 0;
-    }
-}
+    - }
+- }
 
 - void motorControlNoSpeed (byte in1,byte in2, byte direct){
 - switch (direct) {
@@ -119,7 +119,7 @@ Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
       - robotMover(inR1,inR2,inL1,inL2,1);
       - Serial.println("Tiến");
       - delay(10);
-    }
+    - }
     - if (front_distance <= allow_distance){    
       - robotMover(inR1,inR2,inL1,inL2,2);
       - Serial.println("Lùi");
@@ -140,16 +140,16 @@ Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
       - robotMover(inR1,inR2,inL1,inL2,3);
       - Serial.println("Rẽ trái");
       - delay (turn_back_time/2);// Nếu bên trái là khoảng cách lớn nhất thì rẽ trái
-      }
+      - }
      - else{
         - if  (max_distance==right_distance){
           - robotMover(inR1,inR2,inL1,inL2,4);// Nếu bên phải có khoảng cách lớn nhất thì rẽ phải
           - Serial.println("Rẽ phải");
           - delay (turn_back_time/2);
-        }
-      }  
-    }
-}
+        - }
+      - }  
+    -}
+- }
 
 
 - Các sản phẩm sử dụng cho mô hình xe robot dò đường 
