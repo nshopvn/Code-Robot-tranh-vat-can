@@ -56,122 +56,104 @@ Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
       - motorControlNoSpeed(inR1, inR2, 1);
       - motorControlNoSpeed(inL1, inL2, 1);
       - break;
-    case 2:// lùi lại
-      motorControlNoSpeed(inR1, inR2, 2);
-      motorControlNoSpeed(inL1, inL2, 2);
-      break;
-    case 3:// quay trái
-      motorControlNoSpeed(inR1, inR2, 1);
-      motorControlNoSpeed(inL1, inL2, 2);
-      break;
-    case 4:// quay phải
-      motorControlNoSpeed(inR1, inR2, 2);
-      motorControlNoSpeed(inL1, inL2, 1);
-      break;
-    case 5:// rẽ trái
-      motorControlNoSpeed(inR1, inR2, 1);
-      motorControlNoSpeed(inL1, inL2, 0);
-      break;
-    case 6:// rẽ phải
-      motorControlNoSpeed(inR1, inR2, 0);
-      motorControlNoSpeed(inL1, inL2, 1);
-      break;
-    case 7:// rẽ lùi trái
-      motorControlNoSpeed(inR1, inR2, 2);
-      motorControlNoSpeed(inL1, inL2, 0);
-      break;
-    case 8:// rẽ lùi phải
-      motorControlNoSpeed(inR1, inR2, 0);
-      motorControlNoSpeed(inL1, inL2, 2);
-      break;
-    default:
-      action = 0;
-      
-  }
-}
-
-
-void motorControlNoSpeed (byte in1,byte in2, byte direct)
-{
-// in1 and in2 are 2 signal pins to control the motor
-// en is the enable pin
-// the defauspeed is the highest
-// direct includes:
-//    0:Stop
-//    1:Move on 1 direct
-//    2:Move on another direct
-switch (direct) 
-  {
-    case 0:// Dừng không quay
-      digitalWrite(in1,LOW);
-      digitalWrite(in2,LOW);
-      break;
-    case 1:// Quay chiều thứ 1
-      digitalWrite(in1,HIGH);
-      digitalWrite(in2,LOW);
-      break;    
-    case 2:// Quay chiều thứ 2
-      digitalWrite(in1,LOW);
-      digitalWrite(in2,HIGH);
-      break;
-    //default: 
-  }
-}
-
-void objectAvoider (byte inR1, byte inR2, byte inL1, byte inL2, byte allow_distance, int turn_back_time)
-{
-  
-  robotMover(inR1,inR2,inL1,inL2,1);
-  Serial.println("Tiến");
-  //delay(10);
-  int front_distance=objectDistance_cm (90);
-  int left_distance;
-  int right_distance;
-  int max_distance;
-  if (front_distance > allow_distance)
-    {
-      robotMover(inR1,inR2,inL1,inL2,1);
-      Serial.println("Tiến");
-      delay(10);
+    - case 2:// lùi lại
+      - motorControlNoSpeed(inR1, inR2, 2);
+      - motorControlNoSpeed(inL1, inL2, 2);
+      - break;
+    - case 3:// quay trái
+      - motorControlNoSpeed(inR1, inR2, 1);
+      - motorControlNoSpeed(inL1, inL2, 2);
+      - break;
+    - case 4:// quay phải
+      - motorControlNoSpeed(inR1, inR2, 2);
+      - motorControlNoSpeed(inL1, inL2, 1);
+      - break;
+    - case 5:// rẽ trái
+      - motorControlNoSpeed(inR1, inR2, 1);
+      - motorControlNoSpeed(inL1, inL2, 0);
+      - break;
+    - case 6:// rẽ phải
+      - motorControlNoSpeed(inR1, inR2, 0);
+      - motorControlNoSpeed(inL1, inL2, 1);
+      - break;
+    - case 7:// rẽ lùi trái
+      - motorControlNoSpeed(inR1, inR2, 2);
+      - motorControlNoSpeed(inL1, inL2, 0);
+      - break;
+    - case 8:// rẽ lùi phải
+      - motorControlNoSpeed(inR1, inR2, 0);
+      - motorControlNoSpeed(inL1, inL2, 2);
+      - break;
+    - default:
+      - action = 0;
     }
-    if (front_distance <= allow_distance)
-    {    
-      robotMover(inR1,inR2,inL1,inL2,2);
-      Serial.println("Lùi");
-      delay(300);
-      robotMover(inR1,inR2,inL1,inL2,0);
-      left_distance = objectDistance_cm (180); //đo khoảng cách bên trái
-      Serial.println("left: ");    
-      Serial.println(left_distance);
-      //delay (3000);
-      right_distance = objectDistance_cm (0); //đo khoảng cách bên phải
-      Serial.println("right: ");
-      Serial.println(right_distance);
-      Serial.println("front: ");
-      Serial.println(front_distance);
-      //delay (3000);
-      max_distance = max(left_distance,right_distance);// so sánh giá trị lớn nhất với khoảng cách bên phải (gán bằng cái lớn nhất)
-      if  (max_distance==left_distance)
-      {
-        robotMover(inR1,inR2,inL1,inL2,3);
-        Serial.println("Rẽ trái");
-        delay (turn_back_time/2);// Nếu bên trái là khoảng cách lớn nhất thì rẽ trái
+}
+
+- void motorControlNoSpeed (byte in1,byte in2, byte direct){
+- switch (direct) {
+    - case 0:// Dừng không quay
+      - digitalWrite(in1,LOW);
+      - digitalWrite(in2,LOW);
+      - break;
+    - case 1:// Quay chiều thứ 1
+      - digitalWrite(in1,HIGH);
+      - digitalWrite(in2,LOW);
+      - break;    
+    - case 2:// Quay chiều thứ 2
+      - digitalWrite(in1,LOW);
+      - digitalWrite(in2,HIGH);
+      - break;
+    - //default: 
+  }
+}
+
+- void objectAvoider (byte inR1, byte inR2, byte inL1, byte inL2, byte allow_distance, int turn_back_time) {
+  - robotMover(inR1,inR2,inL1,inL2,1);
+  - Serial.println("Tiến");
+  - //delay(10);
+  - int front_distance=objectDistance_cm (90);
+  - int left_distance;
+  - int right_distance;
+  - int max_distance;
+  - if (front_distance > allow_distance){
+      - robotMover(inR1,inR2,inL1,inL2,1);
+      - Serial.println("Tiến");
+      - delay(10);
+    }
+    - if (front_distance <= allow_distance){    
+      - robotMover(inR1,inR2,inL1,inL2,2);
+      - Serial.println("Lùi");
+      - delay(300);
+      - robotMover(inR1,inR2,inL1,inL2,0);
+      - left_distance = objectDistance_cm (180); //đo khoảng cách bên trái
+      - Serial.println("left: ");    
+      - Serial.println(left_distance);
+      - //delay (3000);
+      - right_distance = objectDistance_cm (0); //đo khoảng cách bên phải
+      - Serial.println("right: ");
+      - Serial.println(right_distance);
+      - Serial.println("front: ");
+      - Serial.println(front_distance);
+      - //delay (3000);
+      - max_distance = max(left_distance,right_distance);// so sánh giá trị lớn nhất với khoảng cách bên phải (gán bằng cái lớn nhất)
+      - if  (max_distance==left_distance){
+      - robotMover(inR1,inR2,inL1,inL2,3);
+      - Serial.println("Rẽ trái");
+      - delay (turn_back_time/2);// Nếu bên trái là khoảng cách lớn nhất thì rẽ trái
       }
-      else
-      {
-        if  (max_distance==right_distance)
-        {
-          robotMover(inR1,inR2,inL1,inL2,4);// Nếu bên phải có khoảng cách lớn nhất thì rẽ phải
-          Serial.println("Rẽ phải");
-          delay (turn_back_time/2);
+     - else{
+        - if  (max_distance==right_distance){
+          - robotMover(inR1,inR2,inL1,inL2,4);// Nếu bên phải có khoảng cách lớn nhất thì rẽ phải
+          - Serial.println("Rẽ phải");
+          - delay (turn_back_time/2);
         }
       }  
     }
 }
 
 
-Các sản phẩm sử dụng cho mô hình xe robot dò đường 
-<a href="https://nshopvn.com/product/cam-bien-sieu-am-ioe-sr05-ho-tro-ngo-ra-ttl/"><strong>Cảm biến siêu âm IOE-SRF05</strong></a>
-<a href="https://nshopvn.com/product/cam-bien-sieu-am-hc-sr04/"><strong>Cảm biến siêu âm HCSR04</strong></a
-<a href="https://nshopvn.com/product/mach-dieu-khien-dong-co-dc-l298n/"><strong>Mạch điều khiển động cơ DC L298</strong></a>
-<a href="https://nshopvn.com/product/dong-co-servo-mg996-360-do/"><strong>Động cơ RC Servo 360 độ</strong></a>
+- Các sản phẩm sử dụng cho mô hình xe robot dò đường 
+- <a href="https://nshopvn.com/product/cam-bien-sieu-am-ioe-sr05-ho-tro-ngo-ra-ttl/"><strong>Cảm biến siêu âm IOE-SRF05</strong></a>
+- <a href="https://nshopvn.com/product/cam-bien-sieu-am-hc-sr04/"><strong>Cảm biến siêu âm HCSR04</strong></a
+- <a href="https://nshopvn.com/product/mach-dieu-khien-dong-co-dc-l298n/"><strong>Mạch điều khiển động cơ DC L298</strong></a>
+- <a href="https://nshopvn.com/product/dong-co-servo-mg996-360-do/"><strong>Động cơ RC Servo 360 độ</strong></a>
