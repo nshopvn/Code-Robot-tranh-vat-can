@@ -12,74 +12,50 @@ Tự làm xe Robot Tránh Vật Cản Bằng Cảm Biến Siêu Âm
 - #define inB1 8 //Định nghĩa chân in1 của động cơ B
 - #define inB2 9 //Định nghĩa chân in2 của động cơ B
 
-- void setup()
-{
-  pinMode(inA1, OUTPUT);//Set chân in1 của dc A là output
-  pinMode(inA2, OUTPUT);//Set chân in2 của dc A là output
-  pinMode(inB1, OUTPUT);//Set chân in1 của dc B là output
-  pinMode(inB2, OUTPUT);//Set chân in2 của dc B là output
-  pinMode(trig,OUTPUT);//chân trig sẽ phát tín hiệu
-  pinMode(echo,INPUT);//chân echo sẽ nhận tín hiệu
-  Serial.begin(9600);
-  srf05.attach(5);  // attaches the servo on pin 5 to the servo object
-}
+- void setup(){
+  - pinMode(inA1, OUTPUT);//Set chân in1 của dc A là output
+  - pinMode(inA2, OUTPUT);//Set chân in2 của dc A là output
+  - pinMode(inB1, OUTPUT);//Set chân in1 của dc B là output
+  - pinMode(inB2, OUTPUT);//Set chân in2 của dc B là output
+  - pinMode(trig,OUTPUT);//chân trig sẽ phát tín hiệu
+  - pinMode(echo,INPUT);//chân echo sẽ nhận tín hiệu
+  - Serial.begin(9600);
+  - srf05.attach(5);  // attaches the servo on pin 5 to the servo object }
 
-void loop() 
-{
-  objectAvoider (inA1, inA2, inB1, inB2,50, 1000);
-}
+- void loop() {
+  - objectAvoider (inA1, inA2, inB1, inB2,50, 1000);}
 
-int objectDistance_cm (byte angle)
-{
-  srf05.write(angle);
-  delay(500);
-  unsigned long duration;//biến đo thời gian
-  int distance;//biến lưu khoảng cách
-
-  /* phát xung từ chân trig */
-  digitalWrite(trig,0);//tắt chân trig
-  delayMicroseconds(2);
-  digitalWrite(trig,1);// phát xung từ chân trig
-  delayMicroseconds(5);// xung có độ dài 5 microSeconds
-  digitalWrite(trig,0);//tắt chân trig
-  
+- int objectDistance_cm (byte angle){
+  - srf05.write(angle);
+  - delay(500);
+  - unsigned long duration;//biến đo thời gian
+  - int distance;//biến lưu khoảng cách
+ /* phát xung từ chân trig */
+  - digitalWrite(trig,0);//tắt chân trig
+  - delayMicroseconds(2);
+  - digitalWrite(trig,1);// phát xung từ chân trig
+  - delayMicroseconds(5);// xung có độ dài 5 microSeconds
+  - digitalWrite(trig,0);//tắt chân trig
   /* tính toán thời gian */
-  duration = pulseIn(echo,HIGH);//đo độ rộng xung HIGH ở chân echo. ( http://arduino.vn/reference/pulsein )
-  distance = int(duration/2/29.412);//tính khoảng cách đến vật.
-
+  - duration = pulseIn(echo,HIGH);//đo độ rộng xung HIGH ở chân echo. ( http://arduino.vn/reference/pulsein )
+  - distance = int(duration/2/29.412);//tính khoảng cách đến vật.
   /* in kết quả ra Serial monitor */
   //Serial.print(distance);
   //Serial.println("cm");
   //delay(200);
-  return distance;
+  - return distance;
 }
 
-void robotMover (byte inR1, byte inR2, byte inL1, byte inL2, byte action)
-{
-  /*
-  inR1 inR2 là 2 chân tín hiệu động cơ bên phải
-  inL1 inL2 là 2 chân tín hiệu động cơ bên trái
-  action= 0 đứng yên
-  action =1 đi thẳng
-  action =2 lùi lại
-  action =3 quay trái
-  action =4 quay phải
-  action =5 rẽ trái
-  action =6 rẽ phải
-  action =7 rẽ lùi trái
-  action =8 rẽ lùi phải
-
-  */
-  switch (action)
-  {
-    case 0:// không di chuyển
-      motorControlNoSpeed(inR1, inR2, 0);
-      motorControlNoSpeed(inL1, inL2, 0);
-      break;
-    case 1://đi thẳng
-      motorControlNoSpeed(inR1, inR2, 1);
-      motorControlNoSpeed(inL1, inL2, 1);
-      break;
+- void robotMover (byte inR1, byte inR2, byte inL1, byte inL2, byte action){
+  - switch (action){
+    - case 0:// không di chuyển
+      - motorControlNoSpeed(inR1, inR2, 0);
+      - motorControlNoSpeed(inL1, inL2, 0);
+      - break;
+    - case 1://đi thẳng
+      - motorControlNoSpeed(inR1, inR2, 1);
+      - motorControlNoSpeed(inL1, inL2, 1);
+      - break;
     case 2:// lùi lại
       motorControlNoSpeed(inR1, inR2, 2);
       motorControlNoSpeed(inL1, inL2, 2);
